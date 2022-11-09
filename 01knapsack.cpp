@@ -15,9 +15,7 @@ int main(){
 			for(int i = 0; i < n; i++){
 				for(int j = 0; j <= limit; j++){
 					if (j < w[i]) dp[i+1][j] = dp[i][j];
-					else{
-						dp[i+1][j] = max(dp[i][j], dp[i][j - w[i]] + v[i]);
-					}
+					else dp[i+1][j] = max(dp[i][j], dp[i][j - w[i]] + v[i]);
 				}
 			}
 
