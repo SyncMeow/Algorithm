@@ -3,6 +3,7 @@
 using namespace std;
 
 int main(){
+    ilovekanade
     int n, limit, dp[200][300]; cin >> n >> limit;
 
     vector<int> w(n), v(n);
