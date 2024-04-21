@@ -1,28 +1,50 @@
 #include <bits/stdc++.h>
-#include <vector>
+#define abb ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 using namespace std;
 
-int binary_search(vector<int> &arr, int target){
-	sort(arr.begin(), arr.end());
-	int l = 0, r = arr.size() - 1;
-	while(l<=r){
-		int m = r + (l-r)/2;
-		if (target == arr[m]){
-			return m;
-		}else if (target < arr[m]){
-			r = m - 1;
-		}else{
-			l = m + 1;
-		}
-	}
-	return -1;
+const int MAX = 1e9;
+
+bool logic(int x){
+    return true;
+}
+
+//往上找答案
+void b1(){ //( !=, l+r+1, mid, mid-1, l)
+    int l = 0, r = MAX;
+    while(l != r){
+        int mid = l + (r-l+1)/2;
+        if (logic(mid))l = mid;
+        else r = mid-1;
+    }
+    cout << l << '\n';
+}
+
+//往下找答案
+void b2(){ //( <, l+r, mid, mid+1, r)
+    int l = 0, r = MAX;
+    while(l < r){
+        int mid = l + (r-l)/2;
+        if (logic(mid))r = mid;
+        else l = mid + 1;
+    }
+    cout << r << '\n';
+}
+
+//普通二分搜
+int b3(vector<int> &arr, int target){//( <=, l+r, mid-1, mid-1, mid)
+    int l = 0, r = arr.size()-1;
+    while(l <= r){
+        int mid = l + (r-l)/2;
+        if (arr[mid] == target) return mid;
+        else if (arr[mid] > target) r = mid-1;
+        else l = mid+1;
+    }
+    return -1;
 }
 
 int main(){
-	int N;cin>> N;
-	vector<int> a(N);
-	for(int i = 0;i<N;i++)cin >> a[i];
-
-	int target;cin>>target;
-	cout << binary_search(a, target);
+    abb
+    int n, t; cin >> n >> t;
+    vector<int> arr(n);
+    for(int i = 0;i < n;i++) cin >> arr[i];
 }
