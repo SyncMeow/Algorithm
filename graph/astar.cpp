@@ -8,8 +8,8 @@ struct Point{
 
 struct Node{
     Point pos;
-    int g; //起點到節點的實際成本
-    int h; //節點到終點的估算成本
+    int g; 
+    int h;
     Node* parent;
     Node(Point _pos, int _g, int _h, Node* _parent) : pos(_pos), g(_g), h(_h), parent(_parent) {}
     bool operator<(const Node& rhs) const{
@@ -90,7 +90,6 @@ int main(){
         }
         cout << "\n";
     }
-
-    int c; cin >> c;
+    
     return 0;
 }
